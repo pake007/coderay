@@ -2,8 +2,8 @@
 require 'strscan'
 
 module CodeRay
-
-  autoload :WordList, 'coderay/helpers/word_list'
+  
+  coderay_autoload :WordList, 'helpers', 'word_list'
   
   # = Scanners
   #

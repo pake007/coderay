@@ -1,7 +1,7 @@
-autoload :YAML, 'yaml'
-
 module CodeRay
 module Encoders
+  
+  require 'yaml'
   
   # = YAML Encoder
   #

@@ -109,9 +109,9 @@ module Encoders
       :hint => false,
     }
     
-    autoload :Output,    'coderay/encoders/html/output'
-    autoload :CSS,       'coderay/encoders/html/css'
-    autoload :Numbering, 'coderay/encoders/html/numbering'
+    coderay_autoload :Output,    'encoders', 'html', 'output'
+    coderay_autoload :CSS,       'encoders', 'html', 'css'
+    coderay_autoload :Numbering, 'encoders', 'html', 'numbering'
     
     attr_reader :css
     

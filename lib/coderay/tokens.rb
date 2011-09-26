@@ -1,7 +1,7 @@
 module CodeRay
   
   # GZip library for writing and reading token dumps.
-  autoload :GZip, 'coderay/helpers/gzip'
+  coderay_autoload :GZip, 'helpers', 'gzip'
   
   # = Tokens  TODO: Rewrite!
   #

@@ -10,7 +10,7 @@ module Encoders
     
     FILE_EXTENSION = 'xml'
     
-    autoload :REXML, 'rexml/document'
+    require 'rexml/document'
     
     DEFAULT_OPTIONS = {
       :tab_width => 8,

@@ -129,25 +129,33 @@ module CodeRay
   
   require 'coderay/version'
   
-  # helpers
-  autoload :FileType, 'coderay/helpers/file_type'
+  CODERAY_PATH = File.join File.expand_path('..', __FILE__), 'coderay'
+  
+  class ::Module
+    def coderay_autoload name, *path
+      autoload name, File.join(CODERAY_PATH, *path)
+    end
+  end
   
   # Tokens
-  autoload :Tokens, 'coderay/tokens'
-  autoload :TokensProxy, 'coderay/tokens_proxy'
-  autoload :TokenKinds, 'coderay/token_kinds'
+  coderay_autoload :Tokens,      'tokens'
+  coderay_autoload :TokensProxy, 'tokens_proxy'
+  coderay_autoload :TokenKinds,  'token_kinds'
+  
+  # helpers
+  coderay_autoload :FileType,    'helpers', 'file_type'
   
   # Plugin system
-  autoload :PluginHost, 'coderay/helpers/plugin'
-  autoload :Plugin, 'coderay/helpers/plugin'
+  coderay_autoload :PluginHost,  'helpers', 'plugin'
+  coderay_autoload :Plugin,      'helpers', 'plugin'
   
   # Plugins
-  autoload :Scanners, 'coderay/scanner'
-  autoload :Encoders, 'coderay/encoder'
-  autoload :Styles, 'coderay/style'
+  coderay_autoload :Scanners,    'scanner'
+  coderay_autoload :Encoders,    'encoder'
+  coderay_autoload :Styles,      'style'
   
   # Convenience access and reusable Encoder/Scanner pair
-  autoload :Duo, 'coderay/duo'
+  coderay_autoload :Duo,         'duo'
   
   class << self
     
