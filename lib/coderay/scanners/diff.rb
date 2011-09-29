@@ -16,8 +16,6 @@ module Scanners
     
   protected
     
-    require 'coderay/helpers/file_type'
-    
     def scan_tokens encoder, options
       
       line_kind = nil
