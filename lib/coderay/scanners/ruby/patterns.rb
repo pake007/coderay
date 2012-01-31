@@ -10,7 +10,7 @@ module Scanners
       BEGIN break do next rescue then
       when END case else for retry
       while alias class elsif if not return
-      undef yield
+      undef yield require
     ]
 
     # See http://murfy.de/ruby-constants.
@@ -92,17 +92,17 @@ module Scanners
       | x[0-9A-Fa-f]{1,2}
       | .
     /mx
-    
+
     CONTROL_META_ESCAPE = /
       (?: M-|C-|c )
       (?: \\ (?: M-|C-|c ) )*
       (?: [^\\] | \\ #{SIMPLE_ESCAPE} )?
     /mox
-    
+
     ESCAPE = /
       #{CONTROL_META_ESCAPE} | #{SIMPLE_ESCAPE}
     /mox
-    
+
     CHARACTER = /
       \?
       (?:
@@ -134,7 +134,7 @@ module Scanners
       .*?
       (?: \Z | (?=^\#CODE) )
     /mx
-    
+
     RUBYDOC_OR_DATA = / #{RUBYDOC} | #{DATA} /xo
 
     # Checks for a valid value to follow. This enables
@@ -156,7 +156,7 @@ module Scanners
       while elsif if not return
       yield
     ])
-    
+
     FANCY_STRING_START = / % ( [QqrsWwx] | (?![a-zA-Z0-9]) ) ([^a-zA-Z0-9]) /x
     FANCY_STRING_KIND = Hash.new(:string).merge({
       'r' => :regexp,
@@ -168,8 +168,9 @@ module Scanners
       's' => false,
       'w' => false,
     })
-    
+
   end
-  
+
 end
 end
+
